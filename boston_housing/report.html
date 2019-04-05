@@ -13521,7 +13521,7 @@ Standard deviation of prices: $165,171.13
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>We need to be able to evaluate the learning algorithm with untrained data from the same dataset.  Splitting the data prevents overfitting and doing it in a random fashion can prevent underfitting.</p>
+<p>We need to be able to evaluate the learning algorithm with untrained data from the same dataset.  Splitting the data allows us to train on separate data and test on an untrained set of datapoints..  If we used the entire dataset or most of it for training we could increase the variance in the model and overfit.  On the other hand, if the training set is too small we could underfit the model by oversimplifying the training.  Using an 80/20 split we should provide enough data points for the training that is not oversimplified, while still holding 20% of the data for independent testing.</p>
 
 </div>
 </div>
@@ -13738,7 +13738,7 @@ Think about the pros and cons of adding more training points based on if the tra
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>Using the k-fold cross validation technique, the data is split up into k categories for cross validation.  Each group is designated a test set while the remaining groups will be used as a training set.  The model fit is applied and the scores recorded.  This is repeated using the next group in the list as a test set and its remaining groups as training set until each group had a turn.  You also have the option to shuffle the sample before splitting into different groups. k-fold cross validation helps in preventing variance problems and overfitting of models used in the grid search.</p>
+<p>Using the k-fold cross validation technique, the data is split up into k categories for cross validation.  Each group is designated a test set while the remaining groups will be used as a training set.  The model fit is applied and the scores recorded.  This is repeated using the next group in the list as a test set and its remaining groups as training set until each group had a turn.  You also have the option to shuffle the sample before splitting into different groups. k-fold cross validation helps in preventing variance problems and overfitting of models used in the grid search. The grid search allows us to use the cross validation method of our choice and also select the right combination of hyperparameters for a particular learning algorithm.  Hyperparameters like <code>max-depth</code>, <code>min_sample_leaf</code> and <code>min_samples_split</code> are optimized to select the best hyperparameters based on the scoring function given.  The grid search method then returns the best model and model parameters to be used.</p>
 
 </div>
 </div>
