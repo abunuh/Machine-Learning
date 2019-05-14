@@ -13056,25 +13056,6 @@ ul.typeahead-list  > li > a.pull-right {
 .ansi-bold { font-weight: bold; }
 
     </style>
-<style type="text/css">
-    body[data-notebook-name] > #header #header-container:not(.show-panel), /* body has data-notebook-name attribute when 
-a notebook is open. this rule won't be applied when the notebook is not open (in 404 view for example) */
-body[data-notebook-name] #menubar-container #maintoolbar:not(.show-panel),
-body[data-notebook-name] #menubar-container ul.navbar-nav:not(.show-panel) {
-  display: none;
-}
-
-#menubar.only-panel #menus.navbar-default {
-    background: #fff;
-    border-color: #fff;
-}
-
-.toolbar.with-statusbar{
-    margin-top: 3px;
-    margin-bottom: 0;
-}
-
-    </style>
 
 
 <style type="text/css">
@@ -13108,7 +13089,7 @@ div#notebook {
 
 <!-- Loading mathjax macro -->
 <!-- Load mathjax -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML"></script>
     <!-- MathJax configuration -->
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -14503,7 +14484,7 @@ test_{network} = bottleneck_features['test']</code></pre>
 </code></pre>
 <p><strong>Question 5:</strong> Outline the steps you took to get to your final CNN architecture and your reasoning at each step.  Describe why you think the architecture is suitable for the current problem.</p>
 <p><strong>Answer:</strong></p>
-<p>I used the same architecture as we did for the VGG16 model, but changed the epochs and batch size to get to above 60% accuracy.</p>
+<p>The VGG16 and VGG19 models are popular choices for image classification.  The architecture for both is very similar consisting of a stack of 3×3 convolutional layers stacked on top of each other with successive layers of increasing depth.  Each convolutional layer block is followed by a max pooling layer to reduce volume size.  The stack finally includes 2 fully connected layers followed by a softmax classifier.  The VGG19 model only differs from the VGG16 model by the depth and number of weight layers in the network.  The VGG19 model is effective in identifying specific features in the original image using pretrained weights on imagenet, but due to the increased depth in the network can be slow to train.  Since the VGG16 model was already shown to be effective in classifying our images, my thinking was to increase the depth of the network that would yield even better results which turned out to be true.</p>
 
 </div>
 </div>
@@ -14914,7 +14895,8 @@ Epoch 40/40
 <h2 id="Step-7:-Test-Your-Algorithm">Step 7: Test Your Algorithm<a class="anchor-link" href="#Step-7:-Test-Your-Algorithm">&#182;</a></h2><p>In this section, you will take your new algorithm for a spin!  What kind of dog does the algorithm think that <strong>you</strong> look like?  If you have a dog, does it predict your dog's breed accurately?  If you have a cat, does it mistakenly think that your cat is a dog?</p>
 <h3 id="(IMPLEMENTATION)-Test-Your-Algorithm-on-Sample-Images!">(IMPLEMENTATION) Test Your Algorithm on Sample Images!<a class="anchor-link" href="#(IMPLEMENTATION)-Test-Your-Algorithm-on-Sample-Images!">&#182;</a></h3><p>Test your algorithm at least six images on your computer.  Feel free to use any images you like.  Use at least two human and two dog images.</p>
 <p><strong>Question 6:</strong> Is the output better than you expected :) ?  Or worse :( ?  Provide at least three possible points of improvement for your algorithm.</p>
-<p><strong>Answer:</strong></p>
+<p><strong>Answer:</strong> 
+My algorithn correctly classified the images of humans as human and dogs as dog although there was one image with both a dog and human face that it classified as human.  It also correctly classifed the image with neither dog or human as neither dog or human.  As for the dog breeds, for the dog images they seem accurate, but for the human images it is really up to the imagination to see if it is a good classification or not.</p>
 
 </div>
 </div>
