@@ -1,47 +1,41 @@
+<!DOCTYPE html>
+<html>
+<title>ML Nanodegree Capstone Proposal</title>
+
+<xmp theme="united" style="display:none;">
+
 # Machine Learning Engineer Nanodegree
 ## Capstone Proposal
 Ebrahim Jakoet
 
-August 10th, 2019
+August 15th, 2019
 
 ## Proposal
-_(approx. 2-3 pages)_
 
 ### Domain Background
-_(approx. 1-2 paragraphs)_
 
-In this section, provide brief details on the background information of the domain from which the project is proposed. Historical information relevant to the project should be included. It should be clear how or why a problem in the domain can or should be solved. Related academic research should be appropriately cited in this section, including why that research is relevant. Additionally, a discussion of your personal motivation for investigating a particular problem in the domain is encouraged but not required.
+About 12% of women living in America will develop some form of invasive breast cancer.  It is estimated that 41,760 of women in the US will die from breast cancer in 2019.  Breast cancer remains among the most commonly diagnosed types of cancer in older women especially, and a leading cause of death compared to most other types of cancer [^1].  This is based on the latest available information on [BreastCancer.org](https://www.breastcancer.org/symptoms/understand_bc/statistics).
 
-About 12% of women living in America will develop some form of invasive breast cancer.  It is estimated that 41,760 of women in the US will die from breast cancer in 2019.  Breast cancer remains among the most commonly diagnosed types of cancer in older women especially, and a leading cause of death compared to most other types of cancer [#1].  This is based on the latest available information on [BreastCancer.org](https://www.breastcancer.org/symptoms/understand_bc/statistics).
+In this project we will use the Breast Cancer Wisconsin (Diagnostic) Data Set to build a model that can predict the presence of a malignant cancer based on the given features in the dataset.  We will also determine which features are more significant in the detection of malignant breast cancer.  The dataset is derived from digitized images of a fine needle aspirate (FNA) biopsy of breast mass samples. The features describe characteristics of the cell nuclei present in the image [^2].  Machine learning techniques have already been used in the diagnosis of breast cancer from Fine Needle Aspirates [^3][^4].  Early detection of breast cancer can be life-saving and Machine Learning is increasingly being relied upon in early detection methods.  It is the real life-saving results using machine learning that draws me to the subject.
 
-In this project we will use the Breast Cancer Wisconsin (Diagnostic) Data Set to build a model that can predict the presence of a malignant cancer based on the given features in the dataset.  We will also determine which features are more significant in the detection of malignant breast cancer.  The dataset is derived from digitized images of a fine needle aspirate (FNA) biopsy of breast mass samples. The features describe characteristics of the cell nuclei present in the image [^2].  Early detection of breast cancer can be life-saving and Machine Learning is increasingly being relied upon as more reliable in early detection methods.  It is this that draws me to the subject.
-
-![Digitized image of a fine needle aspirate (FNA) of a breast mass](https://www.google.com/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwilkLyjlfbjAhXuct8KHSk0AmYQjRx6BAgBEAQ&url=%2Furl%3Fsa%3Di%26rct%3Dj%26q%3D%26esrc%3Ds%26source%3Dimages%26cd%3D%26ved%3D%26url%3D%252Furl%253Fsa%253Di%2526rct%253Dj%2526q%253D%2526esrc%253Ds%2526source%253Dimages%2526cd%253D%2526ved%253D2ahUKEwjUzeLskfbjAhUJR6wKHW0ADUMQjRx6BAgBEAQ%2526url%253Dhttps%25253A%25252F%25252Fwww.kaggle.com%25252Fuciml%25252Fbreast-cancer-wisconsin-data%2526psig%253DAOvVaw1_jUt7e07JHOPEi-gxI7DN%2526ust%253D1565451928059637%26psig%3DAOvVaw1_jUt7e07JHOPEi-gxI7DN%26ust%3D1565451928059637&psig=AOvVaw1_jUt7e07JHOPEi-gxI7DN&ust=1565451928059637)
-
-
+![Digitized image of a fine needle aspirate (FNA) of a breast mass](91_6838.gif)
+> Figure 1. A sample image of an FNA biopsy.
 
 ### Problem Statement
-_(approx. 1 paragraph)_
 
-In this section, clearly describe the problem that is to be solved. The problem described should be well defined and should have at least one relevant potential solution. Additionally, describe the problem thoroughly such that it is clear that the problem is quantifiable (the problem can be expressed in mathematical or logical terms) , measurable (the problem can be measured by some metric and clearly observed), and replicable (the problem can be reproduced and occurs more than once).
+There are 30 feature measurements contained in the dataset with each sample labeled as either (M) Malignant or (B) Benign.  The goal is to determine which features are most significant and to build and compare an ensemble model and a DNN model that will be able to predict the malignancy of the FNA sample based on the given features.  The model results will be compared as well. The procedure will be as follows:
 
-There are 30 feature measurements contained in the dataset with each sample labeled as either (M) Malignant or (B) Benign.  The goal is to determine which features are most significant and to build and compare an ensamble model and a DNN model that will be able to predict the malignancy of the FNA sample based on the given features.  The model results will be compared as well. The procedure will be as follows:
 1. Extract the raw data from the compressed zip file.
 2. Explore the data and ensure that it is cleaned before building any prediction models.
 3. Do some basic feature selection and consider removing highly correlated features.
 4. Split the data into training and testing sets.
 4. Train an ensable model like AdaBoost and a DNN on the training set of the data.
-5. Review the results for accuracy of the models.  Compare the ensamble model to the DNN.
+5. Review the results for accuracy of the models.  Compare the ensemble model to the DNN.
 6. Review the results for feature importance and compare to the feature selection used earlier.
 
-
-
 ### Datasets and Inputs
-_(approx. 2-3 paragraphs)_
 
-In this section, the dataset(s) and/or input(s) being considered for the project should be thoroughly described, such as how they relate to the problem and why they should be used. Information such as how the dataset or input is (was) obtained, and the characteristics of the dataset or input, should be included with relevant references and citations as necessary It should be clear how the dataset(s) or input(s) will be used in the project and whether their use is appropriate given the context of the problem.
-
-The data set was aquired from the Kaggle website [Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.kaggle.com/uciml/breast-cancer-wisconsin-data) project.  It is also available from the [UCI Website Archive](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29).  The data consists of a single file of 32 columns and 569 sample instances.  Creators of the data set are listed below:
+The data set was acquired from the Kaggle website [Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.kaggle.com/uciml/breast-cancer-wisconsin-data) project.  It is also available from the [UCI Website Archive](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29).  The data is also available from the following [ftp server](ftp://ftp.cs.wisc.edu/math-prog/cpo-dataset/machine-learn/cancer/) The data consists of a single file of interest of 32 columns and 569 sample instances.  Creators of the data set are listed below:
 
 1. Dr. William H. Wolberg, General Surgery Dept.
 University of Wisconsin, Clinical Sciences Center
@@ -56,7 +50,7 @@ street '@' cs.wisc.edu 608-262-6619
 University of Wisconsin, 1210 West Dayton St., Madison, WI 53706
 olvi '@' cs.wisc.edu
 
-The data consists of an ID column, a labeled target column that shows (M) for malignant or (B) for Beinign and the following 10 features.
+The data consists of an ID column, a labeled target column that shows (M) for malignant or (B) for Benign and the following 10 features.
 
 1. radius (mean of distances from center to points on the perimeter) 
 2. texture (standard deviation of gray-scale values) 
@@ -72,11 +66,10 @@ The data consists of an ID column, a labeled target column that shows (M) for ma
 Each of these 10 features have a mean, standard error and worst or largest (mean of the three largest values) value which makes the total feature set 3 x 10 = 30 features in total.  Feature values have been recorded with 4 significant digits.
 
 ### Solution Statement
-_(approx. 1 paragraph)_
 
-In this section, clearly describe a solution to the problem. The solution should be applicable to the project domain and appropriate for the dataset(s) or input(s) given. Additionally, describe the solution thoroughly such that it is clear that the solution is quantifiable (the solution can be expressed in mathematical or logical terms) , measurable (the solution can be measured by some metric and clearly observed), and replicable (the solution can be reproduced and occurs more than once).
+The solution involves the building of 2 competing models.  The first model will be an AdaBoost ensemble model and will be used as the benchmark model.  The second model will be a Deep Neural Network (DNN) built with the Keras modules for neural network architecture.  AdaBoost and neural network algorithms are popular algorithms in machine learning and have been compared in a number of studies before [^5][^6]. 
 
-The solution involves the building of 2 competing models.  The first model will be an AdaBoost ensamble model and will be used as the benchmark model.  The second model will be a Deep Neural Network (DNN) built with the Keras modules for neural network architecture.  Each model will produce an accuracy and recall score comparing the result of training and testing data using the following formulae:
+Each model will produce an accuracy and recall score comparing the result of training and testing data using the following formulae:
 
 `Accuracy = True Positives + True Negatives / Total number of Samples`
 
@@ -84,56 +77,120 @@ The solution involves the building of 2 competing models.  The first model will 
 
 Since this is a test for the presence or absence of a malignant breast mass, the Recall evaluation metrics will also be relevant. 
 
-We will also compare the processing time for each learning algorithm.  Ideally we are looking for a solution with high accuracy, but the lower processing time may be relevant if processing is a limiting factor for the actual deployment.
+We will also compare the processing time for each learning algorithm.  Ideally, we are looking for a solution with high accuracy, but the lower processing time may be relevant if processing is a limiting factor for the actual deployment.
+
+`Processing Time = Time elapsed between (Training start, Prediction end)`
+
 
 ### Benchmark Model
-_(approximately 1-2 paragraphs)_
-
-In this section, provide the details for a benchmark model or result that relates to the domain, problem statement, and intended solution. Ideally, the benchmark model or result contextualizes existing methods or known information in the domain and problem given, which could then be objectively compared to the solution. Describe how the benchmark model or result is measurable (can be measured by some metric and clearly observed) with thorough detail.
 
 We will use the AdaBoost model as a benchmark model since we are comparing Adaboost to a DNN.  There are many hyper-parameters that can be set for the AdaBoost model.  For our model we will use the following setup, but these hyper-parameters will likely be changed to get the highest evaluation metrics possible.
 
 1. base_estimator: DecisionTreeClassifier(max_depth=1)
-2. n_estimators: 100
+2. n_estimators: 1000
 3. learning_rate: 1.0
 4. algorithm: SAMME.R
 5. random_state: 19
 
-
-
-
 ### Evaluation Metrics
-_(approx. 1-2 paragraphs)_
 
-In this section, propose at least one evaluation metric that can be used to quantify the performance of both the benchmark model and the solution model. The evaluation metric(s) you propose should be appropriate given the context of the data, the problem statement, and the intended solution. Describe how the evaluation metric(s) are derived and provide an example of their mathematical representations (if applicable). Complex evaluation metrics should be clearly defined and quantifiable (can be expressed in mathematical or logical terms).
-
-To compare the AdaBoost and DNN models, we will be using an accuracy score, recall and processing time.  Accuracy will give us a measure of how well the model is able to predict the correct outcome.  Recall is important because we want to be able to minimize the False Negatives since this is a test for the presence of cancer in a breast mass.  Processing time is only relevant if the deployment of the solution has limited resources.  It is always good to see how the 2 models compare in time.  The The formulae for the accuracy and recall metrics are shown below.
+To compare the AdaBoost and DNN models, we will be using an accuracy score, recall and processing time.  Accuracy will give us a measure of how well the model is able to predict the correct outcome.  Recall is important because we want to be able to minimize the False Negatives since this is a test for the presence of cancer in a breast mass.  Processing time is only relevant if the deployment of the solution has limited resources.  It is always good to see how the 2 models compare in time.  The formulae for the accuracy and recall evaluation metrics are shown below.
 
 
 `Accuracy = True Positives + True Negatives / Total number of Samples`
 
 `Recall = True Positives / (False Negatives + True Positives)`
 
-For processing time we will use the python time modules to calculate time difference between the training start and stop of each of the 2 models.
+For processing time, we will use the python time modules to calculate time difference between the training start and stop of each of the 2 models.
+
+`Processing Time = Time elapsed between (Training start, Prediction end)`
 
 
 ### Project Design
-_(approx. 1 page)_
 
-In this final section, summarize a theoretical workflow for approaching a solution given the problem. Provide thorough discussion for what strategies you may consider employing, what analysis of the data might be required before being used, or which algorithms will be considered for your implementation. The workflow and discussion that you provide should align with the qualities of the previous sections. Additionally, you are encouraged to include small visualizations, pseudocode, or diagrams to aid in describing the project design, but it is not required. The discussion should clearly outline your intended workflow of the capstone project.
+The workflow for this project can be broken down into the following sections:
+- Importing the data
+- Data exploration
+- Feature selection and normalization
+- Split into training and test data sets
+- Build the benchmark AdaBoost model
+- Build the DNN model
+- Compare evaluation metrics
+
+Each of these steps in the workflow will be discussed in more detail below.
+
+#### Importing the Data
+
+Since the original data file is in a compressed format, we will decompress the data file and then read it into a Pandas dataframe, using the variable `X` for the features and `y` for the labels.
+
+#### Data Exploration
+
+We will do some basic data exploration by checking for valid data, removing invalid on unnecessary data, generating some statistics on the features and plotting charts to show some of the characteristics of features. We will use the `seaborn` Statistical Data Validation toolset for all visualizations.
+
+#### Feature Selection and Normalization
+
+We will investigate the features, using the low variance method to see if there are any features with low variance that can be excluded.  We will use a Low Variance threshold value of `0.9 x (1 - 0.9)`. This will be stored in a variable called `Xv`.  Finally, we will create a normalized version of the feature set `Xn` using a MinMaxScaler.  The normalized version will be used in the DNN.
+
+#### Split into Training and Test datasets
+
+Using the `sklearn.model_selection.train_test_split()` module, we will split the data into a training set and a testing set. We will use 20% of the data for testing, 80% for training with the `shuffle` parameter set to true to ensure a good mix of malignant and benign samples in both training and testing data set.
+
+#### Build the Benchmark Adaboost Model
+
+We will build an AdaBoost Model as our benchmark model.  AdaBoost is a boosting method that uses a number of weak classifiers combined through a weighted voting scheme that is trained to produce the final result.  The Adaboost model will be built with the following hyperparameter settings:
+
+1. base_estimator: DecisionTreeClassifier(max_depth=1)
+2. n_estimators: 1000
+3. learning_rate: 1.0
+4. algorithm: SAMME.R
+5. random_state: 19
+
+After fitting the model to the training set, we will use it to predict the outcome on the test data set.  Thereafter we will calculate the following evaluation metrics:
+
+1. Accuracy
+2. Recall
+3. Processing time for training and prediction.
+3. Feature importance
+
+![Illustration of Adaboost Algorithm ](Illustration-of-AdaBoost-algorithm-for-creating-a-strong-classifier-based-on-multiple.png "Illustration of AdaBoost Model")
+> Figure 2. Illustration of AdaBoost Model.
+
+#### Build the DNN Model
+
+The competing model will be a Deep Neural Network.  We will build this model with Keras.  The model architecture will be the input layer, 2 hidden layers of 16 nodes each and relu activation functions and a dense layer for the output with softmax activation function.  The DNN model will use the `categorical_crossentropy` loss function with the `rmsprop` optimizer against the `accuracy` metric.  We will train the model using `batch_size` of 32 for 1000 epochs.
+
+![Illustration of DNN with 2 hidden layers](DNN-2_HiddenLayers.jpeg "Illustration of DNN with 2 hidden layers")
+> Figure 3.  Illustration of DNN with 2 hidden layers.
+
+#### Compare Evaluation Metrics
+
+Once the both models have been trained and used to predict the outcomes on the test set, we will compare the results of the following metrics for each of the models.
+
+1. Accuracy
+2. Recall
+3. Processing time for training and prediction.
+
+Finally we will comment on the strengths and weaknesses of the competing models based on the results.
+
+
 
 ### References
 
 
 - [^1]: `https://www.breastcancer.org/symptoms/understand_bc/statistics`.
 
-- [^2]: W.N. Street, W.H. Wolberg and O.L. Mangasarian. Nuclear feature extraction for breast tumor diagnosis. IS&T/SPIE 1993 International Symposium on Electronic Imaging: Science and Technology, volume 1905, pages 861-870, San Jose, CA, 1993. 
------------
+- [^2]: W.N. Street, W.H. Wolberg and O.L*. Mangasarian. Nuclear feature extraction for breast tumor diagnosis. IS&T/SPIE 1993 International Symposium on Electronic Imaging: Science and Technology, volume 1905, pages 861-870, San Jose, CA, 1993. 
 
-**Before submitting your proposal, ask yourself. . .**
+- [^3]: W.H. Wolberg, W.N. Street, and O.L. Mangasarian. Machine learning techniques to diagnose breast cancer from fine-needle aspirates. Cancer Letters 77 (1994) 163-171. 
 
-- Does the proposal you have written follow a well-organized structure similar to that of the project template?
-- Is each section (particularly **Solution Statement** and **Project Design**) written in a clear, concise and specific fashion? Are there any ambiguous terms or phrases that need clarification?
-- Would the intended audience of your project be able to understand your proposal?
-- Have you properly proofread your proposal to assure there are minimal grammatical and spelling mistakes?
-- Are all the resources used for this project correctly cited and referenced?
+- [^4]: W.H. Wolberg, W.N. Street, D.M. Heisey, and O.L. Mangasarian. Computerized breast cancer diagnosis and prognosis from fine needle aspirates. Archives of Surgery 1995;130:511-516. 
+
+- [^5]: Samanta, B.*, Banopadhyay, S.**, Ganguli, R.** & Dutta, S. A comparative study of the performance of single neural network vs. Adaboost algorithm based combination of multiple neural networks for mineral resource estimation.  Journal of the Southern African Institute of Mining and Metallurgy, Volume 105, Number 4, 1 April 2005, pp. 237-246(10)
+
+- [^6]:  T. Windeatt, R.Ghaderi. AdaBoost and neural networks. ESANN'1999 proceedings - European Symposium on Artificial Neural Networks. Bruges (Belgium), 21-23 April 1999, D-Facto public., ISBN 2-600049-9-X, pp. 123-128
+
+
+</xmp>
+
+<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
+</html>

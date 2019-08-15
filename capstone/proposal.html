@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>proposal</title>
+  <style>
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="machine-learning-engineer-nanodegree">Machine Learning Engineer Nanodegree</h1>
+<h2 id="capstone-proposal">Capstone Proposal</h2>
+<p>Ebrahim Jakoet</p>
+<p>August 10th, 2019</p>
+<h2 id="proposal">Proposal</h2>
+<h3 id="domain-background">Domain Background</h3>
+<p>About 12% of women living in America will develop some form of invasive breast cancer. It is estimated that 41,760 of women in the US will die from breast cancer in 2019. Breast cancer remains among the most commonly diagnosed types of cancer in older women especially, and a leading cause of death compared to most other types of cancer <a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. This is based on the latest available information on <a href="https://www.breastcancer.org/symptoms/understand_bc/statistics">BreastCancer.org</a>.</p>
+<p>In this project we will use the Breast Cancer Wisconsin (Diagnostic) Data Set to build a model that can predict the presence of a malignant cancer based on the given features in the dataset. We will also determine which features are more significant in the detection of malignant breast cancer. The dataset is derived from digitized images of a fine needle aspirate (FNA) biopsy of breast mass samples. The features describe characteristics of the cell nuclei present in the image <a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Machine learning techniques have already been used in the diagnosis of breast cancer from Fine Needle Aspirates <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a><a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a>. Early detection of breast cancer can be life-saving and Machine Learning is increasingly being relied upon in early detection methods. It is the real life-saving results using machine learning that draws me to the subject.</p>
+<p><img src="91_6838.gif" alt="Digitized image of a fine needle aspirate (FNA) of a breast mass" /> &gt; Figure 1. A sample image of an FNA biopsy.</p>
+<h3 id="problem-statement">Problem Statement</h3>
+<p>There are 30 feature measurements contained in the dataset with each sample labeled as either (M) Malignant or (B) Benign. The goal is to determine which features are most significant and to build and compare an ensemble model and a DNN model that will be able to predict the malignancy of the FNA sample based on the given features. The model results will be compared as well. The procedure will be as follows:</p>
+<ol type="1">
+<li>Extract the raw data from the compressed zip file.</li>
+<li>Explore the data and ensure that it is cleaned before building any prediction models.</li>
+<li>Do some basic feature selection and consider removing highly correlated features.</li>
+<li>Split the data into training and testing sets.</li>
+<li>Train an ensable model like AdaBoost and a DNN on the training set of the data.</li>
+<li>Review the results for accuracy of the models. Compare the ensemble model to the DNN.</li>
+<li>Review the results for feature importance and compare to the feature selection used earlier.</li>
+</ol>
+<h3 id="datasets-and-inputs">Datasets and Inputs</h3>
+<p>The data set was acquired from the Kaggle website <a href="https://www.kaggle.com/uciml/breast-cancer-wisconsin-data">Breast Cancer Wisconsin (Diagnostic) Data Set</a> project. It is also available from the <a href="https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29">UCI Website Archive</a>. The data is also available from the following <a href="ftp://ftp.cs.wisc.edu/math-prog/cpo-dataset/machine-learn/cancer/">ftp server</a> The data consists of a single file of interest of 32 columns and 569 sample instances. Creators of the data set are listed below:</p>
+<ol type="1">
+<li><p>Dr. William H. Wolberg, General Surgery Dept. University of Wisconsin, Clinical Sciences Center Madison, WI 53792 wolberg ‘@’ eagle.surgery.wisc.edu</p></li>
+<li><p>W. Nick Street, Computer Sciences Dept. University of Wisconsin, 1210 West Dayton St., Madison, WI 53706 street ‘@’ cs.wisc.edu 608-262-6619</p></li>
+<li><p>Olvi L. Mangasarian, Computer Sciences Dept. University of Wisconsin, 1210 West Dayton St., Madison, WI 53706 olvi ‘@’ cs.wisc.edu</p></li>
+</ol>
+<p>The data consists of an ID column, a labeled target column that shows (M) for malignant or (B) for Benign and the following 10 features.</p>
+<ol type="1">
+<li>radius (mean of distances from center to points on the perimeter)</li>
+<li>texture (standard deviation of gray-scale values)</li>
+<li>perimeter</li>
+<li>area</li>
+<li>smoothness (local variation in radius lengths)</li>
+<li>compactness (perimeter^2 / area - 1.0)</li>
+<li>concavity (severity of concave portions of the contour)</li>
+<li>concave points (number of concave portions of the contour)</li>
+<li>symmetry</li>
+<li>fractal dimension (“coastline approximation” - 1)</li>
+</ol>
+<p>Each of these 10 features have a mean, standard error and worst or largest (mean of the three largest values) value which makes the total feature set 3 x 10 = 30 features in total. Feature values have been recorded with 4 significant digits.</p>
+<h3 id="solution-statement">Solution Statement</h3>
+<p>The solution involves the building of 2 competing models. The first model will be an AdaBoost ensemble model and will be used as the benchmark model. The second model will be a Deep Neural Network (DNN) built with the Keras modules for neural network architecture. AdaBoost and neural network algorithms are popular algorithms in machine learning and have been compared in a number of studies before <a href="#fn5" class="footnote-ref" id="fnref5" role="doc-noteref"><sup>5</sup></a><a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a>.</p>
+<p>Each model will produce an accuracy and recall score comparing the result of training and testing data using the following formulae:</p>
+<p><code>Accuracy = True Positives + True Negatives / Total number of Samples</code></p>
+<p><code>Recall = True Positives / (False Negatives + True Positives)</code></p>
+<p>Since this is a test for the presence or absence of a malignant breast mass, the Recall evaluation metrics will also be relevant.</p>
+<p>We will also compare the processing time for each learning algorithm. Ideally, we are looking for a solution with high accuracy, but the lower processing time may be relevant if processing is a limiting factor for the actual deployment.</p>
+<p><code>Processing Time = Time elapsed between (Training start, Prediction end)</code></p>
+<h3 id="benchmark-model">Benchmark Model</h3>
+<p>We will use the AdaBoost model as a benchmark model since we are comparing Adaboost to a DNN. There are many hyper-parameters that can be set for the AdaBoost model. For our model we will use the following setup, but these hyper-parameters will likely be changed to get the highest evaluation metrics possible.</p>
+<ol type="1">
+<li>base_estimator: DecisionTreeClassifier(max_depth=1)</li>
+<li>n_estimators: 1000</li>
+<li>learning_rate: 1.0</li>
+<li>algorithm: SAMME.R</li>
+<li>random_state: 19</li>
+</ol>
+<h3 id="evaluation-metrics">Evaluation Metrics</h3>
+<p>To compare the AdaBoost and DNN models, we will be using an accuracy score, recall and processing time. Accuracy will give us a measure of how well the model is able to predict the correct outcome. Recall is important because we want to be able to minimize the False Negatives since this is a test for the presence of cancer in a breast mass. Processing time is only relevant if the deployment of the solution has limited resources. It is always good to see how the 2 models compare in time. The formulae for the accuracy and recall evaluation metrics are shown below.</p>
+<p><code>Accuracy = True Positives + True Negatives / Total number of Samples</code></p>
+<p><code>Recall = True Positives / (False Negatives + True Positives)</code></p>
+<p>For processing time, we will use the python time modules to calculate time difference between the training start and stop of each of the 2 models.</p>
+<p><code>Processing Time = Time elapsed between (Training start, Prediction end)</code></p>
+<h3 id="project-design">Project Design</h3>
+<p>The workflow for this project can be broken down into the following sections: - Importing the data - Data exploration - Feature selection and normalization - Split into training and test data sets - Build the benchmark AdaBoost model - Build the DNN model - Compare evaluation metrics</p>
+<p>Each of these steps in the workflow will be discussed in more detail below.</p>
+<h4 id="importing-the-data">Importing the Data</h4>
+<p>Since the original data file is in a compressed format, we will decompress the data file and then read it into a Pandas dataframe, using the variable <code>X</code> for the features and <code>y</code> for the labels.</p>
+<h4 id="data-exploration">Data Exploration</h4>
+<p>We will do some basic data exploration by checking for valid data, removing invalid on unnecessary data, generating some statistics on the features and plotting charts to show some of the characteristics of features. We will use the <code>seaborn</code> Statistical Data Validation toolset for all visualizations.</p>
+<h4 id="feature-selection-and-normalization">Feature Selection and Normalization</h4>
+<p>We will investigate the features, using the low variance method to see if there are any features with low variance that can be excluded. We will use a Low Variance threshold value of <code>0.9 x (1 - 0.9)</code>. This will be stored in a variable called <code>Xv</code>. Finally, we will create a normalized version of the feature set <code>Xn</code> using a MinMaxScaler. The normalized version will be used in the DNN.</p>
+<h4 id="split-into-training-and-test-datasets">Split into Training and Test datasets</h4>
+<p>Using the <code>sklearn.model_selection.train_test_split()</code> module, we will split the data into a training set and a testing set. We will use 20% of the data for testing, 80% for training with the <code>shuffle</code> parameter set to true to ensure a good mix of malignant and benign samples in both training and testing data set.</p>
+<h4 id="build-the-benchmark-adaboost-model">Build the Benchmark Adaboost Model</h4>
+<p>We will build an AdaBoost Model as our benchmark model. AdaBoost is a boosting method that uses a number of weak classifiers combined through a weighted voting scheme that is trained to produce the final result. The Adaboost model will be built with the following hyperparameter settings:</p>
+<ol type="1">
+<li>base_estimator: DecisionTreeClassifier(max_depth=1)</li>
+<li>n_estimators: 1000</li>
+<li>learning_rate: 1.0</li>
+<li>algorithm: SAMME.R</li>
+<li>random_state: 19</li>
+</ol>
+<p>After fitting the model to the training set, we will use it to predict the outcome on the test data set. Thereafter we will calculate the following evaluation metrics:</p>
+<ol type="1">
+<li>Accuracy</li>
+<li>Recall</li>
+<li>Processing time for training and prediction.</li>
+<li>Feature importance</li>
+</ol>
+<p><img src="Illustration-of-AdaBoost-algorithm-for-creating-a-strong-classifier-based-on-multiple.png" title="Illustration of AdaBoost Model" alt="Illustration of Adaboost Algorithm" /> &gt; Figure 2. Illustration of AdaBoost Model.</p>
+<h4 id="build-the-dnn-model">Build the DNN Model</h4>
+<p>The competing model will be a Deep Neural Network. We will build this model with Keras. The model architecture will be the input layer, 2 hidden layers of 16 nodes each and relu activation functions and a dense layer for the output with softmax activation function. The DNN model will use the <code>categorical_crossentropy</code> loss function with the <code>rmsprop</code> optimizer against the <code>accuracy</code> metric. We will train the model using <code>batch_size</code> of 32 for 1000 epochs.</p>
+<p><img src="DNN-2_HiddenLayers.jpeg" title="Illustration of DNN with 2 hidden layers" alt="Illustration of DNN with 2 hidden layers" /> &gt; Figure 3. Illustration of DNN with 2 hidden layers.</p>
+<h4 id="compare-evaluation-metrics">Compare Evaluation Metrics</h4>
+<p>Once the both models have been trained and used to predict the outcomes on the test set, we will compare the results of the following metrics for each of the models.</p>
+<ol type="1">
+<li>Accuracy</li>
+<li>Recall</li>
+<li>Processing time for training and prediction.</li>
+</ol>
+<p>Finally we will comment on the strengths and weaknesses of the competing models based on the results.</p>
+<h3 id="references">References</h3>
+<ul>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+<li></li>
+</ul>
+<section class="footnotes" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1" role="doc-endnote"><p><code>https://www.breastcancer.org/symptoms/understand_bc/statistics</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2" role="doc-endnote"><p>W.N. Street, W.H. Wolberg and O.L*. Mangasarian. Nuclear feature extraction for breast tumor diagnosis. IS&amp;T/SPIE 1993 International Symposium on Electronic Imaging: Science and Technology, volume 1905, pages 861-870, San Jose, CA, 1993.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3" role="doc-endnote"><p>W.H. Wolberg, W.N. Street, and O.L. Mangasarian. Machine learning techniques to diagnose breast cancer from fine-needle aspirates. Cancer Letters 77 (1994) 163-171.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4" role="doc-endnote"><p>W.H. Wolberg, W.N. Street, D.M. Heisey, and O.L. Mangasarian. Computerized breast cancer diagnosis and prognosis from fine needle aspirates. Archives of Surgery 1995;130:511-516.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5" role="doc-endnote"><p>Samanta, B.*, Banopadhyay, S.<strong>, Ganguli, R.</strong> &amp; Dutta, S. A comparative study of the performance of single neural network vs. Adaboost algorithm based combination of multiple neural networks for mineral resource estimation. Journal of the Southern African Institute of Mining and Metallurgy, Volume 105, Number 4, 1 April 2005, pp. 237-246(10)<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6" role="doc-endnote"><p>T. Windeatt, R.Ghaderi. AdaBoost and neural networks. ESANN’1999 proceedings - European Symposium on Artificial Neural Networks. Bruges (Belgium), 21-23 April 1999, D-Facto public., ISBN 2-600049-9-X, pp. 123-128<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>
