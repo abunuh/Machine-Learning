@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html>
-<title>ML Nanodegree Capstone Proposal</title>
-
-<xmp theme="united" style="display:none;">
-
 # Machine Learning Engineer Nanodegree
 ## Capstone Proposal
 Ebrahim Jakoet
@@ -14,11 +8,11 @@ August 15th, 2019
 
 ### Domain Background
 
-About 12% of women living in America will develop some form of invasive breast cancer.  It is estimated that 41,760 of women in the US will die from breast cancer in 2019.  Breast cancer remains among the most commonly diagnosed types of cancer in older women especially, and a leading cause of death compared to most other types of cancer [^1].  This is based on the latest available information on [BreastCancer.org](https://www.breastcancer.org/symptoms/understand_bc/statistics).
+About 12% of women living in America will develop some form of invasive breast cancer.  It is estimated that 41,760 of women in the US will die from breast cancer in 2019.  Breast cancer remains among the most commonly diagnosed types of cancer in older women especially, and a leading cause of death compared to most other types of cancer _[1]_.  This is based on the latest available information on [BreastCancer.org](https://www.breastcancer.org/symptoms/understand_bc/statistics).
 
-In this project we will use the Breast Cancer Wisconsin (Diagnostic) Data Set to build a model that can predict the presence of a malignant cancer based on the given features in the dataset.  We will also determine which features are more significant in the detection of malignant breast cancer.  The dataset is derived from digitized images of a fine needle aspirate (FNA) biopsy of breast mass samples. The features describe characteristics of the cell nuclei present in the image [^2].  Machine learning techniques have already been used in the diagnosis of breast cancer from Fine Needle Aspirates [^3][^4].  Early detection of breast cancer can be life-saving and Machine Learning is increasingly being relied upon in early detection methods.  It is the real life-saving results using machine learning that draws me to the subject.
+In this project we will use the Breast Cancer Wisconsin (Diagnostic) Data Set to build a model that can predict the presence of a malignant cancer based on the given features in the dataset.  We will also determine which features are more significant in the detection of malignant breast cancer.  The dataset is derived from digitized images of a fine needle aspirate (FNA) biopsy of breast mass samples. The features describe characteristics of the cell nuclei present in the image [^2].  Machine learning techniques have already been used in the diagnosis of breast cancer from Fine Needle Aspirates _[3][4]_.  Early detection of breast cancer can be life-saving and Machine Learning is increasingly being relied upon in early detection methods.  It is the real life-saving results using machine learning that draws me to the subject.
 
-![Digitized image of a fine needle aspirate (FNA) of a breast mass](91_6838.gif)
+![Digitized image of a fine needle aspirate (FNA) of a breast mass](91_6838.jpeg)
 > Figure 1. A sample image of an FNA biopsy.
 
 ### Problem Statement
@@ -52,22 +46,22 @@ olvi '@' cs.wisc.edu
 
 The data consists of an ID column, a labeled target column that shows (M) for malignant or (B) for Benign and the following 10 features.
 
-1. radius (mean of distances from center to points on the perimeter) 
-2. texture (standard deviation of gray-scale values) 
-3. perimeter 
-4. area 
-5. smoothness (local variation in radius lengths) 
-6. compactness (perimeter^2 / area - 1.0) 
-7. concavity (severity of concave portions of the contour) 
-8. concave points (number of concave portions of the contour) 
-9. symmetry 
+1. radius (mean of distances from center to points on the perimeter)
+2. texture (standard deviation of gray-scale values)
+3. perimeter
+4. area
+5. smoothness (local variation in radius lengths)
+6. compactness (perimeter^2 / area - 1.0)
+7. concavity (severity of concave portions of the contour)
+8. concave points (number of concave portions of the contour)
+9. symmetry
 10. fractal dimension ("coastline approximation" - 1)
 
 Each of these 10 features have a mean, standard error and worst or largest (mean of the three largest values) value which makes the total feature set 3 x 10 = 30 features in total.  Feature values have been recorded with 4 significant digits.
 
 ### Solution Statement
 
-The solution involves the building of 2 competing models.  The first model will be an AdaBoost ensemble model and will be used as the benchmark model.  The second model will be a Deep Neural Network (DNN) built with the Keras modules for neural network architecture.  AdaBoost and neural network algorithms are popular algorithms in machine learning and have been compared in a number of studies before [^5][^6]. 
+The solution involves the building of 2 competing models.  The first model will be an AdaBoost ensemble model and will be used as the benchmark model.  The second model will be a Deep Neural Network (DNN) built with the Keras modules for neural network architecture.  AdaBoost and neural network algorithms are popular algorithms in machine learning and have been compared in a number of studies before _[5][6]_.
 
 Each model will produce an accuracy and recall score comparing the result of training and testing data using the following formulae:
 
@@ -75,7 +69,7 @@ Each model will produce an accuracy and recall score comparing the result of tra
 
 `Recall = True Positives / (False Negatives + True Positives)`
 
-Since this is a test for the presence or absence of a malignant breast mass, the Recall evaluation metrics will also be relevant. 
+Since this is a test for the presence or absence of a malignant breast mass, the Recall evaluation metrics will also be relevant.
 
 We will also compare the processing time for each learning algorithm.  Ideally, we are looking for a solution with high accuracy, but the lower processing time may be relevant if processing is a limiting factor for the actual deployment.
 
@@ -152,14 +146,14 @@ After fitting the model to the training set, we will use it to predict the outco
 3. Processing time for training and prediction.
 3. Feature importance
 
-![Illustration of Adaboost Algorithm ](Illustration-of-AdaBoost-algorithm-for-creating-a-strong-classifier-based-on-multiple.png "Illustration of AdaBoost Model")
+![Illustration of Adaboost Algorithm ](Illustration-of-AdaBoost-algorithm-for-creating-a-strong-classifier-based-on-multiple.jpeg "Illustration of AdaBoost Model")
 > Figure 2. Illustration of AdaBoost Model.
 
 #### Build the DNN Model
 
 The competing model will be a Deep Neural Network.  We will build this model with Keras.  The model architecture will be the input layer, 2 hidden layers of 16 nodes each and relu activation functions and a dense layer for the output with softmax activation function.  The DNN model will use the `categorical_crossentropy` loss function with the `rmsprop` optimizer against the `accuracy` metric.  We will train the model using `batch_size` of 32 for 1000 epochs.
 
-![Illustration of DNN with 2 hidden layers](DNN-2_HiddenLayers.jpeg "Illustration of DNN with 2 hidden layers")
+![Illustration of DNN with 2 hidden layers](DNN-2_HiddenLayersx.jpeg "Illustration of DNN with 2 hidden layers")
 > Figure 3.  Illustration of DNN with 2 hidden layers.
 
 #### Compare Evaluation Metrics
@@ -177,20 +171,14 @@ Finally we will comment on the strengths and weaknesses of the competing models 
 ### References
 
 
-- [^1]: `https://www.breastcancer.org/symptoms/understand_bc/statistics`.
+- [1]: `https://www.breastcancer.org/symptoms/understand_bc/statistics`.
 
-- [^2]: W.N. Street, W.H. Wolberg and O.L*. Mangasarian. Nuclear feature extraction for breast tumor diagnosis. IS&T/SPIE 1993 International Symposium on Electronic Imaging: Science and Technology, volume 1905, pages 861-870, San Jose, CA, 1993. 
+- [2]: W.N. Street, W.H. Wolberg and O.L*. Mangasarian. Nuclear feature extraction for breast tumor diagnosis. IS&T/SPIE 1993 International Symposium on Electronic Imaging: Science and Technology, volume 1905, pages 861-870, San Jose, CA, 1993.
 
-- [^3]: W.H. Wolberg, W.N. Street, and O.L. Mangasarian. Machine learning techniques to diagnose breast cancer from fine-needle aspirates. Cancer Letters 77 (1994) 163-171. 
+- [3]: W.H. Wolberg, W.N. Street, and O.L. Mangasarian. Machine learning techniques to diagnose breast cancer from fine-needle aspirates. Cancer Letters 77 (1994) 163-171.
 
-- [^4]: W.H. Wolberg, W.N. Street, D.M. Heisey, and O.L. Mangasarian. Computerized breast cancer diagnosis and prognosis from fine needle aspirates. Archives of Surgery 1995;130:511-516. 
+- [4]: W.H. Wolberg, W.N. Street, D.M. Heisey, and O.L. Mangasarian. Computerized breast cancer diagnosis and prognosis from fine needle aspirates. Archives of Surgery 1995;130:511-516.
 
-- [^5]: Samanta, B.*, Banopadhyay, S.**, Ganguli, R.** & Dutta, S. A comparative study of the performance of single neural network vs. Adaboost algorithm based combination of multiple neural networks for mineral resource estimation.  Journal of the Southern African Institute of Mining and Metallurgy, Volume 105, Number 4, 1 April 2005, pp. 237-246(10)
+- [5]: Samanta, B.*, Banopadhyay, S.**, Ganguli, R.** & Dutta, S. A comparative study of the performance of single neural network vs. Adaboost algorithm based combination of multiple neural networks for mineral resource estimation.  Journal of the Southern African Institute of Mining and Metallurgy, Volume 105, Number 4, 1 April 2005, pp. 237-246(10)
 
-- [^6]:  T. Windeatt, R.Ghaderi. AdaBoost and neural networks. ESANN'1999 proceedings - European Symposium on Artificial Neural Networks. Bruges (Belgium), 21-23 April 1999, D-Facto public., ISBN 2-600049-9-X, pp. 123-128
-
-
-</xmp>
-
-<script src="http://strapdownjs.com/v/0.2/strapdown.js"></script>
-</html>
+- [6]:  T. Windeatt, R.Ghaderi. AdaBoost and neural networks. ESANN'1999 proceedings - European Symposium on Artificial Neural Networks. Bruges (Belgium), 21-23 April 1999, D-Facto public., ISBN 2-600049-9-X, pp. 123-128
