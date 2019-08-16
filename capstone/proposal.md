@@ -17,15 +17,7 @@ In this project we will use the Breast Cancer Wisconsin (Diagnostic) Data Set to
 
 ### Problem Statement
 
-There are 30 feature measurements contained in the dataset with each sample labeled as either (M) Malignant or (B) Benign.  The goal is to determine which features are most significant and to build and compare an ensemble model and a DNN model that will be able to predict the malignancy of the FNA sample based on the given features.  The model results will be compared as well. The procedure will be as follows:
-
-1. Extract the raw data from the compressed zip file.
-2. Explore the data and ensure that it is cleaned before building any prediction models.
-3. Do some basic feature selection and consider removing highly correlated features.
-4. Split the data into training and testing sets.
-4. Train an ensable model like AdaBoost and a DNN on the training set of the data.
-5. Review the results for accuracy of the models.  Compare the ensemble model to the DNN.
-6. Review the results for feature importance and compare to the feature selection used earlier.
+There are 30 feature measurements contained in the dataset with each sample labeled as either (M) Malignant or (B) Benign.  The goal is to determine which features are most significant and to build and compare an AdaBoost model and a DNN model that will be able to predict the malignancy of the FNA sample based on the given features.  The 2 models will be compared using standard evaluation metrics. 
 
 ### Datasets and Inputs
 
