@@ -17,3 +17,9 @@ The links below have all available resources required for this project:
 - [Kaggle Project: Breast Cancer Wisconsin Data](https://www.kaggle.com/uciml/breast-cancer-wisconsin-data)
 - [UCI Website Archive ](https://archive.ics.uci.edu/ml/datasets/Breast+Cancer+Wisconsin+%28Diagnostic%29)
 - [FTP Server](ftp://ftp.cs.wisc.edu/math-prog/cpo-dataset/machine-learn/cancer/)
+
+## Relevant files for the Final Report
+
+- `Solution.ipynb`: Jupyter notebook with code and comments.
+- `report.pdf`: Final Report.
+- `breast-cancer-wisconsin-data.zip`: Data used for this project.
